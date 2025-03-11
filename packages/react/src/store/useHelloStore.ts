@@ -1,15 +1,15 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 import { getHelloMessage } from "../services/useHello";
 
 export interface HelloData {
-  message: string
-  state: number
+  message: string;
+  state: number;
 }
 interface HelloState {
-  hello: HelloData | null
-  loading: boolean
-  error: string | null
-  fetchHello: () => Promise<void>
+  hello: HelloData | null;
+  loading: boolean;
+  error: string | null;
+  fetchHello: () => Promise<void>;
 }
 
 const useHelloStore = create<HelloState>((set) => ({
@@ -17,14 +17,15 @@ const useHelloStore = create<HelloState>((set) => ({
   loading: false,
   error: null,
   fetchHello: async () => {
-    set({ loading: true, error: null })
+    set({ loading: true, error: null });
     try {
-      const hello = await getHelloMessage()
-      set({ hello, loading: false })
-    } catch (err: any) {
-      set({ error: err.message || '取得資料失敗', loading: false })
+      const hello = await getHelloMessage();
+      set({ hello, loading: false });
+    } catch (err) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      set({ error: (err as any).message || "取得資料失敗", loading: false });
     }
   },
-}))
+}));
 
-export default useHelloStore
+export default useHelloStore;

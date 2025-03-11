@@ -1,5 +1,1 @@
-#!/bin/sh
-. "$(dirname "$0")/common.sh"
-
-# 使用 commitlint 檢查提交訊息
-npx --no-install commitlint --edit "$1"
+pnpm commitlint --edit $1

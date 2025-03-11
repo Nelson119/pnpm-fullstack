@@ -1,7 +1,8 @@
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import Button from "./components/Button";
-import { Routes, Route, Link, useRoutes } from "react-router-dom";
+// import { Routes, Route, Link, useRoutes } from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 import "./App.css";
 import "virtual:uno.css";
 
