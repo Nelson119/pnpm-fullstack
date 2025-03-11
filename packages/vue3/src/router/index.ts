@@ -1,12 +1,29 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { useAuthStore } from '@/store/auth'
+import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
-  { path: "/", component: () => import("../views/Home.vue") },
-  { path: "/about", component: () => import("../views/AboutUs.vue") },
-];
+  { path: '/', component: () => import('@/views/Home') },
+  {
+    path: '/about',
+    component: () => import('@/views/About'),
+    meta: { requiresAuth: true } // 設定 meta 屬性標記需要登入
+  },
+  { path: '/', component: () => import('@/views/Home') }
+]
 
 const router = createRouter({
   history: createWebHistory(),
-  routes,
-});
+  routes
+})
 
-export default router;
+// 全域前置守衛
+router.beforeEach((to, from, next) => {
+  const authStore = useAuthStore()
+
+  if (to.meta.requiresAuth && !authStore.token) {
+    next('/login') // 未登入時導向登入頁面
+  } else {
+    next() // 繼續導航
+  }
+})
+
+export default router
