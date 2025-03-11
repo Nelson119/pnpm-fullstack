@@ -22,7 +22,6 @@ const useHelloStore = create<HelloState>((set) => ({
       const hello = await getHelloMessage();
       set({ hello, loading: false });
     } catch (err) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       set({ error: (err as any).message || "取得資料失敗", loading: false });
     }
   },

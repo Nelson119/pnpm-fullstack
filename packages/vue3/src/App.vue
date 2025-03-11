@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import HelloWorld from "./components/HelloWorld.vue";
+import { RouterLink, RouterView } from "vue-router";
 </script>
 
 <template>
@@ -11,7 +11,12 @@ import HelloWorld from "./components/HelloWorld.vue";
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <nav>
+    <RouterLink to="/">Home</RouterLink> |
+    <RouterLink to="/about">About</RouterLink>
+  </nav>
+  <RouterView />
+  <!-- <HelloWorld msg="Vite + Vue" />
 
   <div
     class="flex flex-col items-center justify-center min-h-screen bg-base-200"
@@ -22,7 +27,7 @@ import HelloWorld from "./components/HelloWorld.vue";
     <button class="btn my-4">DaisyUI 按鈕</button>
     <button class="i-heroicons-fire-20-solid text-red-500 text-4xl"></button>
     <button btn>xxx</button>
-  </div>
+  </div> -->
 </template>
 
 <style scoped>
