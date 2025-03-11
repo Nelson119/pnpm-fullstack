@@ -10,7 +10,37 @@
     "dev:vue3": "pnpm -r --filter \"./packages/vue3\" --parallel run dev",
     "echo": "echo \"./packages/{args[0]}\" ",
     "start": "pnpm -r --filter \"./packages/backend\" run start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": [
+      "prettier --write--parser json"
+    ],
+    "package.json": [
+      "prettier --write"
+    ],
+    "*.vue": [
+      "eslint --fix",
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.{scss,less,styl,html}": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.md": [
+      "prettier --write"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -19,5 +49,11 @@
     "ignoredBuiltDependencies": [
       "esbuild"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^9.22.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "prettier": "^3.5.3"
   }
 }
