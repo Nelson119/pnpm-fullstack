@@ -1,0 +1,14 @@
+#!/bin/sh
+. "$(dirname "$0")/common.sh"
+
+# 如果在 CI 環境中，跳過 pre-commit 鉤子
+[ -n "$CI" ] && exit 0
+
+# 確保 pnpm 已安裝
+if ! command_exists pnpm; then
+    echo "pnpm could not be found. Please install pnpm and ensure it's in your PATH."
+    exit 1
+fi
+
+# 根據 lintstagedrc.js 配置格式化和提交代碼
+pnpm exec lint-staged

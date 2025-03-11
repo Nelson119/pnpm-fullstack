@@ -7,6 +7,8 @@
   "scripts": {
     "install:all": "pnpm install && pnpm -r install",
     "dev": "pnpm -r --filter \"./packages/*\" run dev",
+    "dev:vue3": "pnpm -r --filter \"./packages/vue3\" --parallel run dev",
+    "echo": "echo \"./packages/{args[0]}\" ",
     "start": "pnpm -r --filter \"./packages/backend\" run start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
