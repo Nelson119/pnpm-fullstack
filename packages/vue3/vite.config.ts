@@ -30,6 +30,6 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src')
     },
     // 讓 import 時可以省略副檔名
-    extensions: ['.ts', '.js', '.vue', '.json']
+    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'] // 這行很重要！
   }
 })

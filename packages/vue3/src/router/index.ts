@@ -7,7 +7,7 @@ const routes = [
     component: () => import('@/views/About'),
     meta: { requiresAuth: true } // 設定 meta 屬性標記需要登入
   },
-  { path: '/', component: () => import('@/views/Home') }
+  { path: '/login', component: () => import('@/views/Login') }
 ]
 
 const router = createRouter({
